@@ -1,0 +1,39 @@
+
+
+<div class="row mycontainer">
+  <div class="col-md-12"> <h1>Candidate list</h1> </div>
+  <div class="col-md-12" *ngIf="!(list && list.length)"> <p><em>Loading...</em></p> </div>
+  <div class="col-md-12">
+    <div class="table-responsive">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Firstname</th>
+            <th scope="col">Lastname</th>
+            <th scope="col">Experience</th>
+            <th scope="col">Position</th>
+            <th scope="col">Date</th>
+            <th scope="col">
+              Actions &nbsp;&nbsp;
+              <span (click)="onAdd()" class="btn btn-primary btn-sm">Add</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of list">
+            <td>{{ item.firstname }}</td>
+            <td>{{ item.lastname }}</td>
+            <td>{{ item.experience }}</td>
+            <td>{{ item.position }}</td>
+            <td>{{ item.date | date : 'dd-MM-yyyy' }}</td>
+            <td>
+              <span (click)="onDetails(item)" class="btn btn-info btn-sm">Details</span>
+              <span (click)="onEdit(item)" class="btn btn-secondary btn-sm">Edit</span>
+              <span (click)="onDelete(item)" class="btn btn-danger btn-sm">Delete</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

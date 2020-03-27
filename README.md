@@ -1,5 +1,5 @@
 # Candidate Demo Project
-It is a demo written on TypeScript and C Sharp over Microsoft .NET platform. Is very simple project with one used: Angular, ASP.NET Core, SQL Server, etc.
+It is a demo written on TypeScript and C Sharp over Microsoft Visual Studio 2019 Community Edition. Is very simple project with one used: Angular, ASP.NET Core, SQL Server, etc.
 
 ## Description 
 It is a simple application that allows entering and viewing candidates in a human resources process. The business requirements for this project are:
@@ -8,17 +8,28 @@ It is a simple application that allows entering and viewing candidates in a huma
 * You must be able to enter a new candidate including your name, surname, years of experience, date of application, position you applied for and photo.
 
 
-## Develop steps
+## Install steps
+- git clone https://github.com/ameksike/cep.onetree.candidate.git
 
-### Database Command
+
+
+## Develop steps
+### Develop .Net Core Command
+- 
+
+### Develop Database Command
 - Add-Migration "InitialCreate" 
 - Update-Database
 - Remove-Migration
 
-### Angular Command
+### Develop Angular Command
+- ng generate component about
 - ng generate module candidate
 - ng generate component candidate/component/list
 - ng generate component candidate/component/form
+- ng generate component candidate/component/details
 - ng generate interface candidate/model/candidate
 - ng generate service   candidate/service/candidate
+
+
 
