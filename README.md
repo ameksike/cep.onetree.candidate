@@ -8,4 +8,17 @@ It is a simple application that allows entering and viewing candidates in a huma
 * You must be able to enter a new candidate including your name, surname, years of experience, date of application, position you applied for and photo.
 
 
+## Develop steps
+
+### Database Command
+- Add-Migration "InitialCreate" 
+- Update-Database
+- Remove-Migration
+
+### Angular Command
+- ng generate module candidate
+- ng generate component component/candidate/list
+- ng generate component component/candidate/form
+- ng generate interface component/model/candidate
+- ng generate service   component/service/candidate
 
