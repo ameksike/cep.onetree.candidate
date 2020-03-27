@@ -17,8 +17,8 @@ It is a simple application that allows entering and viewing candidates in a huma
 
 ### Angular Command
 - ng generate module candidate
-- ng generate component candidate/component/candidate/list
-- ng generate component candidate/component/candidate/form
+- ng generate component candidate/component/list
+- ng generate component candidate/component/form
 - ng generate interface candidate/model/candidate
 - ng generate service   candidate/service/candidate
 
