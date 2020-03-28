@@ -35,9 +35,9 @@ import { DetailsComponent } from './candidate/component/details/details.componen
       { path: 'about', component: AboutComponent },
 
       { path: 'candidate', component: ListComponent },
-      { path: 'candidate/add', component: FormComponent }
-      { path: 'candidate/add/:id', component: FormComponent }
-      { path: 'candidate/edit/:id', component: FormComponent }
+      { path: 'candidate/add', component: FormComponent },
+      { path: 'candidate/add/:id', component: FormComponent },
+      { path: 'candidate/edit/:id', component: FormComponent },
       { path: 'candidate/details/:id', component: DetailsComponent }
     ])
   ],
