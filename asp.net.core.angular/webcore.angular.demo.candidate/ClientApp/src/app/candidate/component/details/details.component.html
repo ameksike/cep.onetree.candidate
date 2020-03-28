@@ -1,3 +1,59 @@
-<p>
-  details works!
-</p>
+<div class="row mycontainer">
+  <div class="col-md-12"> <h1>Details Candidate</h1> </div>
+
+  <div class="col-md-12" *ngIf="!model.candidateId"> <p><em>Loading...</em></p> </div>
+
+  <div class="col-md-12" *ngIf="model.candidateId">
+
+    <div class="form-row">
+      <div class="col-md-6 mb-3">
+        <label for="firstname">Firstname:</label>
+        <input type="text" class="form-control is-valid" id="firstname"
+               placeholder="firstname ..." value="{{model.firstname}}" readonly>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label for="lastname">Lastname:</label>
+        <input type="text" class="form-control is-valid" id="lastname"
+               placeholder="Lastname ..." value="{{model.lastname}}" readonly>
+      </div>
+    </div>
+
+
+    <div class="form-row">
+      <div class="col-md-12 mb-6">
+        <label for="experience">Experience:</label>
+        <input type="text" class="form-control is-valid" id="experience"
+               placeholder="Experience ..." value="{{model.experience }}" readonly>
+      </div>
+    </div>
+
+
+    <div class="form-row">
+      <div class="col-md-12 mb-6">
+        <label for="position">Position:</label>
+        <input type="text" class="form-control is-valid" id="position"
+               placeholder="Position ..." value="{{model.position }}" readonly>
+      </div>
+    </div>
+
+
+    <div class="form-row">
+      <div class="col-md-12 mb-6">
+        <label for="date">Date:</label>
+        <input type="date" class="form-control is-valid" id="date"
+               placeholder="Date ..." value="{{ model.date  }}" readonly>
+      </div>
+    </div> 
+
+  </div>
+
+  <div class="col-md-12">
+    
+    <div class="form-row">
+      <div class="col-md-12 mb-6" style="padding-top:10px;">
+        <span (click)="goback(model)" class="btn btn-primary btn-sm">Goback </span>
+      </div>
+    </div>
+  </div>
+</div>

@@ -14,7 +14,7 @@
             <th scope="col">Position</th>
             <th scope="col">Date</th>
             <th scope="col">
-              Actions &nbsp;&nbsp;
+              Actions &nbsp;
               <span (click)="onAdd()" class="btn btn-primary btn-sm">Add</span>
             </th>
           </tr>
@@ -25,10 +25,10 @@
             <td>{{ item.lastname }}</td>
             <td>{{ item.experience }}</td>
             <td>{{ item.position }}</td>
-            <td>{{ item.date | date : 'dd-MM-yyyy' }}</td>
+            <td>{{ item.date | date : 'MM/dd/yyyy' }}</td>
             <td>
               <span (click)="onDetails(item)" class="btn btn-info btn-sm">Details</span>
-              <span (click)="onEdit(item)" class="btn btn-secondary btn-sm">Edit</span>
+              <span (click)="onEdit(item)" class="btn btn-primary btn-sm">Edit</span>
               <span (click)="onDelete(item)" class="btn btn-danger btn-sm">Delete</span>
             </td>
           </tr>

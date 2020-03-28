@@ -35,14 +35,30 @@ export class ListComponent implements OnInit {
     this.reloadData();
   }
 
+  onDelete(item: any) {
+    this.srvData.delete(item.candidateId).subscribe(
+      data => {
+        console.log(data);
+        this.reloadData();
+      },
+      error => console.log(error)
+     // error => this.srvMessage.error(error.message));
+    );
+  }
+
   onDetails(item: any) {
+    console.log(item);
+    this.router.navigate(['/candidate/details', item.candidateId]);
+
   }
 
   onEdit(item: any) {
+    console.log(item);
+    this.router.navigate(['/candidate/edit', item.candidateId]);
   }
 
   onAdd() {
-    this.router.navigate(['/candidate/add', '.']);
+    this.router.navigate(['/candidate/add']);
   }
 
 }
