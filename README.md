@@ -1,6 +1,9 @@
 # Candidate Demo Project
 It is a demo written on TypeScript and C Sharp over Microsoft Visual Studio 2019 Community Edition. Is very simple project with one used: Angular, ASP.NET Core, SQL Server, etc.
 
+![Screenshot](/readme/demo.png)
+
+
 ## Description 
 It is a simple application that allows entering and viewing candidates in a human resources process. The business requirements for this project are:
 * The human resources user must be able to create an account (only email and password) and be able to login.
@@ -29,7 +32,8 @@ It is a simple application that allows entering and viewing candidates in a huma
 - ng generate component candidate/component/form
 - ng generate component candidate/component/details
 - ng generate interface candidate/model/candidate
-- ng generate service   candidate/service/candidate
+- ng generate service   candidate/service/uploadimg
+- ng generate component candidate/component/avatar
 
 
 
