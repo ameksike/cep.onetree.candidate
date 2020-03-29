@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -16,7 +17,13 @@ import { AboutComponent } from './about/about.component';
 import { DetailsComponent } from './candidate/component/details/details.component';
 import { UploadimgService } from './candidate/service/uploadimg.service';
 
-
+import { UserModule } from './user/user.module';
+import { IdentityComponent } from './user/component/identity/identity.component';
+import { GuardService } from './user/service/guard.service';
+import { IdentityService } from './user/service/identity.service';
+import { AccountService } from './user/service/account.service';
+import { AccountFormComponent } from './user/component/form/form.component';
+import { AuthInterceptorService } from './user/service/interceptor.service';
 
 @NgModule({
   declarations: [
@@ -31,18 +38,33 @@ import { UploadimgService } from './candidate/service/uploadimg.service';
     FormsModule,
     ReactiveFormsModule,
     CandidateModule,
+    UserModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'about', component: AboutComponent },
 
-      { path: 'candidate', component: ListComponent },
-      { path: 'candidate/add', component: FormComponent },
+      { path: 'candidate', component: ListComponent, canActivate: [GuardService]  },
+      { path: 'candidate/add', component: FormComponent},
       { path: 'candidate/add/:id', component: FormComponent },
       { path: 'candidate/edit/:id', component: FormComponent },
-      { path: 'candidate/details/:id', component: DetailsComponent }
+      { path: 'candidate/details/:id', component: DetailsComponent },
+
+      { path: 'user/identity/login', component: IdentityComponent },
+      { path: 'user/account/register', component: AccountFormComponent }
     ])
   ],
-  providers: [CandidateService, UploadimgService],
+  providers: [
+    CandidateService,
+    UploadimgService,
+    GuardService,
+    IdentityService,
+    AccountService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

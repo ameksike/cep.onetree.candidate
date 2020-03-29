@@ -29,6 +29,7 @@ It is a simple application that allows entering and viewing candidates in a huma
 
 ### Develop Database Command
 - Add-Migration "InitialCreate" 
+- Add-Migration "AddAuthentication" 
 - Update-Database
 - Remove-Migration
 
@@ -41,6 +42,11 @@ It is a simple application that allows entering and viewing candidates in a huma
 - ng generate interface candidate/model/candidate
 - ng generate service   candidate/service/uploadimg
 - ng generate component candidate/component/avatar
-
-
-
+- ng generate module 	user
+- ng generate component user/component/form
+- ng generate component user/component/identity
+- ng generate interface user/model/account
+- ng generate service   user/service/account
+- ng generate service   user/service/identity
+- ng generate service   user/service/interceptor
+- ng generate service   user/service/guard

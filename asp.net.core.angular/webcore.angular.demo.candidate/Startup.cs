@@ -1,14 +1,19 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Features;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
+using Microsoft.IdentityModel.Tokens;
+using System;
 using System.IO;
+using System.Text;
 using webcore.angular.demo.candidate.Models;
 
 namespace webcore.angular.demo.candidate
@@ -43,6 +48,28 @@ namespace webcore.angular.demo.candidate
                 o.MultipartBodyLengthLimit = int.MaxValue;
                 o.MemoryBufferThreshold = int.MaxValue;
             });
+
+            //... set security options 
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+              .AddEntityFrameworkStores<ApplicationDbContext>()
+              .AddDefaultTokenProviders();
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                 options.TokenValidationParameters = new TokenValidationParameters
+                 {
+                     ValidateIssuer = true,
+                     ValidateAudience = true,
+                     ValidateLifetime = true,
+                     ValidateIssuerSigningKey = true,
+                     ValidIssuer = "yourdomain.com",
+                     ValidAudience = "yourdomain.com",
+                     IssuerSigningKey = new SymmetricSecurityKey(
+                        Encoding.UTF8.GetBytes(Configuration["APP_SECRET_KEY"])
+                     ),
+                     ClockSkew = TimeSpan.Zero
+                 });
+
             //... set Application Database Context as a service
             services.AddDbContext<ApplicationDbContext>(options =>  options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
@@ -65,9 +92,11 @@ namespace webcore.angular.demo.candidate
                 app.UseExceptionHandler("/Error");
             }
 
+            //... set HTTP police 
             app.UseHttpsRedirection();
             app.UseCors("CorsPolicy");
 
+            //... set static files options 
             app.UseSpaStaticFiles();
             app.UseStaticFiles();
             app.UseStaticFiles(new StaticFileOptions()
@@ -75,7 +104,11 @@ namespace webcore.angular.demo.candidate
                 FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"Resources")),
                 RequestPath = new PathString("/Resources")
             });
-            
+
+            //... set security options 
+            app.UseAuthentication();
+
+            //... set routing options 
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

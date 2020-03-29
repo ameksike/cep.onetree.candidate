@@ -1,0 +1,61 @@
+<div class="row mycontainer">
+  <div class="col-md-12"> <h1>Login User Account</h1> </div>
+  <div class="col-md-12">
+
+    <form class="form-horizontal" novalidate (ngSubmit)="save()" [formGroup]="frmGroup">
+
+      <fieldset>
+
+        <div class="form-group" [ngClass]="{'has-error': (frmGroup.get('email').touched || frmGroup.get('email').dirty ) && !frmGroup.get('email').valid }">
+          <label class="col-md-2 control-label" for="firstname">Email:</label>
+          <div class="col-md-8">
+            <input class="form-control" type="text" id="firstname" formControlName="email" required />
+            <span class="help-block" *ngIf="(frmGroup.get('email').touched)">
+              <span *ngIf="(frmGroup.get('email').errors)">
+                This field it is required.
+              </span>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group" [ngClass]="{'has-error': (frmGroup.get('password').touched || frmGroup.get('password').dirty ) && !frmGroup.get('password').valid }">
+          <label class="col-md-2 control-label" for="lastname">Password:</label>
+          <div class="col-md-8">
+            <input class="form-control" type="password" id="password" formControlName="password" required />
+            <span class="help-block" *ngIf="(frmGroup.get('password').touched)">
+              <span *ngIf="(frmGroup.get('password').errors)">
+                This field it is required.
+              </span>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-md-4 col-md-offset-2">
+            <span>
+              <button class="btn btn-primary"
+                      type="button"
+                      (click)="login()"
+                      [disabled]="!frmGroup.valid">
+                Loging
+              </button>
+              <button class="btn btn-danger"
+                      type="button"
+                      (click)="register()"
+                      >
+                Register
+              </button>
+              <button class="btn"
+                      type="button"
+                      (click)="cancel()">
+                Cancelar
+              </button>
+            </span>
+          </div>
+        </div>
+      </fieldset>
+
+    </form>
+
+  </div>
+</div>

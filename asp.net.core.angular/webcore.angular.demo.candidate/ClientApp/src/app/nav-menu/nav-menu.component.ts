@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { IdentityService } from '../user/service/identity.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav-menu',
@@ -7,6 +9,7 @@ import { Component } from '@angular/core';
 })
 export class NavMenuComponent {
   isExpanded = false;
+  username: string;
 
   collapse() {
     this.isExpanded = false;
@@ -14,5 +17,25 @@ export class NavMenuComponent {
 
   toggle() {
     this.isExpanded = !this.isExpanded;
+  }
+
+  constructor(
+    private srvUser: IdentityService,
+    private router: Router
+  ) {
+
+    this.username = '';
+    this.srvUser.user.subscribe(
+      user => this.username = user.email
+    );
+  }
+
+  isAuth() {
+    return this.srvUser.isAuth();
+  }
+
+  logout() {
+    this.srvUser.logout();
+    this.router.navigate(['/']);
   }
 }
