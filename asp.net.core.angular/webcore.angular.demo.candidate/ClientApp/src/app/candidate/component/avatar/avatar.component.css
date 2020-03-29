@@ -1,5 +1,5 @@
 .avatar {
-  max-height: 1 50px;
+  max-height: 150px;
   max-width: 150px;
   background-repeat: no-repeat;
   background-position: 50%;
@@ -7,3 +7,7 @@
   border: 3px solid #666;
   background-size: 100% auto;
 }
+
+  .avatar:hover {
+    cursor: pointer;
+  }

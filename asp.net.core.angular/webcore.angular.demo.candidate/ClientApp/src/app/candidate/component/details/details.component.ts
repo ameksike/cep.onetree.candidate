@@ -23,6 +23,7 @@ export class DetailsComponent implements OnInit {
       lastname: '',
       experience: 0,
       position: '',
+      avatar: '',
       date: ''
     };
 

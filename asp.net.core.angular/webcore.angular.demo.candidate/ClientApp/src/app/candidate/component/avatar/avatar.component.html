@@ -1,0 +1,21 @@
+<div class="form-group">
+  <div class="col-md-8">
+
+    <div class="field">
+      <input class="file-input"
+             type="file"
+             name="file"
+             style="display:none;"
+             #fileInput
+             (change)="onChange(fileInput)" />
+    </div>
+
+
+    <div class="column">
+      <figure class="image">
+        <img class="avatar" [src]="imageUrl" (click)="onSelect(fileInput)" />
+      </figure>
+    </div>
+
+  </div>
+</div>

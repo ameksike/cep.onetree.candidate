@@ -37,7 +37,6 @@ export class CandidateService {
     return this.http.delete(`${this.apiURL}/${id}`, { responseType: 'text' });
   }
 
-
   fixDateFormat(item: CandidateInterface, fm: string = 'yyyy-MM-dd') {
     let dp = new DatePipe(navigator.language);
     item.date = dp.transform(item.date, fm);

@@ -30,5 +30,8 @@ namespace webcore.angular.demo.candidate.Models
 
         [Column(TypeName = "varchar(100)")]
         public string Position { get; set; }
+
+        [Column(TypeName = "varchar(200)")]
+        public string Avatar { get; set; }
     }
 }

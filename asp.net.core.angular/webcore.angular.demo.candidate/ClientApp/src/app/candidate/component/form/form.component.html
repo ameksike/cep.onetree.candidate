@@ -1,24 +1,24 @@
 <div class="row mycontainer">
   <div class="col-md-12" *ngIf="id!=0"> <h1>Edit Candidate</h1> </div>
   <div class="col-md-12" *ngIf="id==0"> <h1>Add Candidate</h1> </div>
-  
   <div class="col-md-12">
 
-
-    <form class="form-horizontal"
-          novalidate
-          (ngSubmit)="save()" [formGroup]="frmGroup">
+    <form class="form-horizontal"  novalidate (ngSubmit)="save()" [formGroup]="frmGroup">
 
       <fieldset>
-        <div class="form-group"
-             [ngClass]="{'has-error': (frmGroup.get('firstname').touched || frmGroup.get('firstname').dirty ) && !frmGroup.get('firstname').valid }">
+
+        <div class="form-group">
+          <label class="col-md-2 control-label" for="date">Photo:</label>
+          <div class="col-md-8">
+            <input class="form-control" type="text" id="avatar" formControlName="avatar" style="display:none;" />
+            <app-avatar (onFinished)="onFinished($event)" src="{{frmGroup.get('avatar').value}}"></app-avatar>
+          </div>
+        </div>
+
+        <div class="form-group" [ngClass]="{'has-error': (frmGroup.get('firstname').touched || frmGroup.get('firstname').dirty ) && !frmGroup.get('firstname').valid }">
           <label class="col-md-2 control-label" for="firstname">Firstname</label>
           <div class="col-md-8">
-            <input class="form-control"
-                   type="text" id="firstname"
-                   formControlName="firstname"
-                   required />
-
+            <input class="form-control" type="text" id="firstname" formControlName="firstname" required />
             <span class="help-block" *ngIf="(frmGroup.get('firstname').touched)">
               <span *ngIf="(frmGroup.get('firstname').errors)">
                 This field it is required.
@@ -27,15 +27,10 @@
           </div>
         </div>
 
-        <div class="form-group"
-             [ngClass]="{'has-error': (frmGroup.get('lastname').touched || frmGroup.get('lastname').dirty ) && !frmGroup.get('lastname').valid }">
+        <div class="form-group" [ngClass]="{'has-error': (frmGroup.get('lastname').touched || frmGroup.get('lastname').dirty ) && !frmGroup.get('lastname').valid }">
           <label class="col-md-2 control-label" for="lastname">Lastname</label>
           <div class="col-md-8">
-            <input class="form-control"
-                   type="text" id="lastname"
-                   formControlName="lastname"
-                   required />
-
+            <input class="form-control" type="text" id="lastname" formControlName="lastname" required />
             <span class="help-block" *ngIf="(frmGroup.get('lastname').touched)">
               <span *ngIf="(frmGroup.get('lastname').errors)">
                 This field it is required.
@@ -44,14 +39,10 @@
           </div>
         </div>
 
-        <div class="form-group"
-             [ngClass]="{'has-error': (frmGroup.get('experience').touched || frmGroup.get('experience').dirty ) && !frmGroup.get('experience').valid }">
+        <div class="form-group" [ngClass]="{'has-error': (frmGroup.get('experience').touched || frmGroup.get('experience').dirty ) && !frmGroup.get('experience').valid }">
           <label class="col-md-2 control-label" for="experience">Experience</label>
           <div class="col-md-8">
-            <input class="form-control"
-                   type="number" id="experience"
-                   formControlName="experience" />
-
+            <input class="form-control" type="number" id="experience" formControlName="experience" />
             <span class="help-block" *ngIf="(frmGroup.get('experience').touched)">
               <span *ngIf="false">
                 This field it is required.
@@ -60,14 +51,10 @@
           </div>
         </div>
 
-        <div class="form-group"
-             [ngClass]="{'has-error': (frmGroup.get('position').touched || frmGroup.get('position').dirty ) && !frmGroup.get('position').valid }">
+        <div class="form-group" [ngClass]="{'has-error': (frmGroup.get('position').touched || frmGroup.get('position').dirty ) && !frmGroup.get('position').valid }">
           <label class="col-md-2 control-label" for="position">Position</label>
           <div class="col-md-8">
-            <input class="form-control"
-                   type="text" id="position"
-                   formControlName="position" />
-
+            <input class="form-control" type="text" id="position" formControlName="position" />
             <span class="help-block" *ngIf="(frmGroup.get('position').touched)">
               <span *ngIf="false">
                 This field it is required.
@@ -76,14 +63,10 @@
           </div>
         </div>
 
-        <div class="form-group"
-             [ngClass]="{'has-error': (frmGroup.get('date').touched || frmGroup.get('date').dirty ) && !frmGroup.get('date').valid }">
+        <div class="form-group" [ngClass]="{'has-error': (frmGroup.get('date').touched || frmGroup.get('date').dirty ) && !frmGroup.get('date').valid }">
           <label class="col-md-2 control-label" for="date">Date</label>
           <div class="col-md-8">
-            <input class="form-control"
-                   type="date" id="date"
-                   formControlName="date" />
-
+            <input class="form-control" type="date" id="date" formControlName="date" />
             <span class="help-block" *ngIf="(frmGroup.get('date').touched)">
               <span *ngIf="false">
                 This field it is required.
@@ -95,22 +78,13 @@
         <div class="form-group">
           <div class="col-md-4 col-md-offset-2">
             <span>
-              <button class="btn btn-primary"
-                      type="submit"
-                      [disabled]="!frmGroup.valid">
-                Save
-              </button>
-
-              <button class="btn"
-                      (click)="cancel()">
-                Cancel
-              </button>
+              <button class="btn btn-primary" type="submit" [disabled]="!frmGroup.valid"> Save </button>
+              <button class="btn" (click)="cancel()"> Cancel </button>
             </span>
-
           </div>
-
         </div>
       </fieldset>
+
     </form>
 
   </div>

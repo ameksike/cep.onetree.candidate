@@ -5,4 +5,5 @@ export interface CandidateInterface {
   experience?: number;
   position?: string;
   date?: string;
+  avatar?: string;
 }

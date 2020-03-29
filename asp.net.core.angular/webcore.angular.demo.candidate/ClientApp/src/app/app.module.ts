@@ -14,6 +14,7 @@ import { ListComponent } from './candidate/component/list/list.component';
 import { FormComponent } from './candidate/component/form/form.component';
 import { AboutComponent } from './about/about.component';
 import { DetailsComponent } from './candidate/component/details/details.component';
+import { UploadimgService } from './candidate/service/uploadimg.service';
 
 
 
@@ -41,7 +42,7 @@ import { DetailsComponent } from './candidate/component/details/details.componen
       { path: 'candidate/details/:id', component: DetailsComponent }
     ])
   ],
-  providers: [CandidateService],
+  providers: [CandidateService, UploadimgService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -6,6 +6,13 @@
   <div class="col-md-12" *ngIf="model.candidateId">
 
     <div class="form-row">
+      <div class="col-md-12 mb-6">
+        <label for="experience">Photo:</label>
+        <img class="avatar" src="{{model.avatar}}" />
+      </div>
+    </div>
+
+    <div class="form-row">
       <div class="col-md-6 mb-3">
         <label for="firstname">Firstname:</label>
         <input type="text" class="form-control is-valid" id="firstname"
@@ -44,7 +51,7 @@
         <input type="date" class="form-control is-valid" id="date"
                placeholder="Date ..." value="{{ model.date  }}" readonly>
       </div>
-    </div> 
+    </div>
 
   </div>
 

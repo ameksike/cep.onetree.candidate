@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CandidateInterface } from '../../model/candidate';
 import { CandidateService } from '../../service/candidate.service';
-import { DatePipe } from '@angular/common';
+import { UploadimgService } from '../../service/uploadimg.service';
 
 @Component({
   selector: 'app-form',
@@ -19,7 +19,8 @@ export class FormComponent implements OnInit {
     private frmBuilder: FormBuilder,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private srvData: CandidateService
+    private srvData: CandidateService,
+    private uploader: UploadimgService
   ) { }
 
   ngOnInit() {
@@ -37,11 +38,12 @@ export class FormComponent implements OnInit {
       }
     });
 
-   this.frmGroup = this.frmBuilder.group({
+    this.frmGroup = this.frmBuilder.group({
       firstname: '',
       lastname: '',
       experience: 0,
       position: '',
+      avatar: "Resources/Avatar/avatar01.png",
       date: Date.now()
     });
   }
@@ -82,4 +84,7 @@ export class FormComponent implements OnInit {
     this.frmGroup.patchValue(this.srvData.fixDateFormat(item));
   }
 
+  onFinished(event) {
+    this.frmGroup.get('avatar').setValue(event);
+  }
 }
