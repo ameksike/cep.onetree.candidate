@@ -52,7 +52,7 @@ export class IdentityService {
     let now = new Date().getTime();
     let dateExp = new Date(exp);
 
-    if (now >= dateExp.getTime()) {
+    if (now >= dateExp.getTime() || this._user == null  || this._user.email == '') {
       this.removeTokens();
       return false;
     } else {
