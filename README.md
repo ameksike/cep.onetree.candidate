@@ -2,7 +2,6 @@
 It is a demo written on TypeScript and C Sharp over Microsoft Visual Studio 2019 Community Edition. Is very simple project with one used: Angular, ASP.NET Core, SQL Server, etc.
 
 ![Screenshot](readme/demo.png)
-![GitHub Logo](/readme/logo.png)
 
 
 ## Description 
