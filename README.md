@@ -14,26 +14,10 @@ It is a simple application that allows entering and viewing candidates in a huma
 ## Install steps
 - git clone https://github.com/ameksike/cep.onetree.candidate.git
 - Update-Database
-
-![Screenshot](readme/demo02.png)
+- add APP_SECRET_KEY environment variable 
+![Screenshot](readme/secret_key.png)
 
 ## Develop steps
-### Develop .Net Core Command
-- dotnet --version
-- dotnet new --install Microsoft.DotNet.Web.Spa.ProjectTemplates::2.2.401
-- dotnet new sln 
-- dotnet new angular -o webcore.angular.demo.candidate
-- dotnet sln add webcore.angular.demo.candidate/webcore.angular.demo.candidate.csproj
-- dotnet restore
-- dotnet build
-- dotnet run 
-
-### Develop Database Command
-- Add-Migration "InitialCreate" 
-- Add-Migration "AddAuthentication" 
-- Update-Database
-- Remove-Migration
-
 ### Develop Angular Command
 - ng generate component about
 - ng generate module candidate
@@ -51,3 +35,21 @@ It is a simple application that allows entering and viewing candidates in a huma
 - ng generate service   user/service/identity
 - ng generate service   user/service/interceptor
 - ng generate service   user/service/guard
+
+![Screenshot](readme/demo02.png)
+
+### Develop .Net Core Command
+- dotnet --version
+- dotnet new --install Microsoft.DotNet.Web.Spa.ProjectTemplates::2.2.401
+- dotnet new sln 
+- dotnet new angular -o webcore.angular.demo.candidate
+- dotnet sln add webcore.angular.demo.candidate/webcore.angular.demo.candidate.csproj
+- dotnet restore
+- dotnet build
+- dotnet run 
+
+### Develop Database Command
+- Add-Migration "InitialCreate" 
+- Add-Migration "AddAuthentication" 
+- Update-Database
+- Remove-Migration
