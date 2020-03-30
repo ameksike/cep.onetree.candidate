@@ -15,6 +15,7 @@ It is a simple application that allows entering and viewing candidates in a huma
 - git clone https://github.com/ameksike/cep.onetree.candidate.git
 - Update-Database
 
+![Screenshot](readme/demo02.png)
 
 ## Develop steps
 ### Develop .Net Core Command
