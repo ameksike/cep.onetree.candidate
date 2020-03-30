@@ -38,7 +38,8 @@ export class CandidateService {
   }
 
   fixDateFormat(item: CandidateInterface, fm: string = 'yyyy-MM-dd') {
-    let dp = new DatePipe(navigator.language);
+    console.log(navigator.language);
+    let dp = new DatePipe("en-US"); // navigator.language
     item.date = dp.transform(item.date, fm);
     return item;
   }
