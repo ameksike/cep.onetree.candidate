@@ -15,6 +15,7 @@ using System;
 using System.IO;
 using System.Text;
 using webcore.angular.demo.candidate.Models;
+using webcore.angular.demo.candidate.Services;
 
 namespace webcore.angular.demo.candidate
 {
@@ -32,28 +33,9 @@ namespace webcore.angular.demo.candidate
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            //... set CorsPolicy 
-            services.AddCors(options => {
-                options.AddPolicy("CorsPolicy",
-                    builder => builder.AllowAnyOrigin()
-                    .AllowAnyMethod()
-                    .AllowAnyHeader()
-                );
-            });
-
-            //... set form options 
-            services.Configure<FormOptions>(o =>
-            {
-                o.ValueLengthLimit = int.MaxValue;
-                o.MultipartBodyLengthLimit = int.MaxValue;
-                o.MemoryBufferThreshold = int.MaxValue;
-            });
-
-            //... set security options 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-              .AddEntityFrameworkStores<ApplicationDbContext>()
-              .AddDefaultTokenProviders();
-
+            StartupServices.ConfigureServices(services);
+            StartupSecurity.ConfigureServices(services, Configuration);
+           
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                  options.TokenValidationParameters = new TokenValidationParameters
@@ -69,7 +51,7 @@ namespace webcore.angular.demo.candidate
                      ),
                      ClockSkew = TimeSpan.Zero
                  });
-
+      
             //... set Application Database Context as a service
             services.AddDbContext<ApplicationDbContext>(options =>  options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
@@ -106,7 +88,7 @@ namespace webcore.angular.demo.candidate
             });
 
             //... set security options 
-            app.UseAuthentication();
+            StartupSecurity.Configure(app, env);
 
             //... set routing options 
             app.UseMvc(routes =>
