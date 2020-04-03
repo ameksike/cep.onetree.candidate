@@ -3,7 +3,7 @@ import { IdentityService } from '../../service/identity.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AccountService } from '../../service/account.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { AccountUser } from '../../model/account';
+import { AccountUser } from '../../model/account.user';
 
 @Component({
   selector: 'app-form',

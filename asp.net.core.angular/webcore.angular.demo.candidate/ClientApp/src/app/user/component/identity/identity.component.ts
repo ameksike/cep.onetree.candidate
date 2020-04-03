@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { IdentityService } from '../../service/identity.service';
 import { Router } from '@angular/router';
-import { AccountUser } from '../../model/account';
+import { AccountUser } from '../../model/account.user';
 
 @Component({
   selector: 'app-identity',
