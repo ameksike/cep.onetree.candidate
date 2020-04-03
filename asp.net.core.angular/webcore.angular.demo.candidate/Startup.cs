@@ -15,7 +15,6 @@ using System;
 using System.IO;
 using System.Text;
 using webcore.angular.demo.candidate.Models;
-using webcore.angular.demo.candidate.Services;
 
 namespace webcore.angular.demo.candidate
 {
@@ -33,8 +32,43 @@ namespace webcore.angular.demo.candidate
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            StartupServices.ConfigureServices(services);
-            StartupSecurity.ConfigureServices(services, Configuration);
+            //... set CorsPolicy 
+            services.AddCors(options => {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                );
+            });
+
+            //... set form options 
+            services.Configure<FormOptions>(o =>
+            {
+                o.ValueLengthLimit = int.MaxValue;
+                o.MultipartBodyLengthLimit = int.MaxValue;
+                o.MemoryBufferThreshold = int.MaxValue;
+            });
+
+            //... set security options 
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+              .AddEntityFrameworkStores<ApplicationDbContext>()
+              .AddDefaultTokenProviders();
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                 options.TokenValidationParameters = new TokenValidationParameters
+                 {
+                     ValidateIssuer = true,
+                     ValidateAudience = true,
+                     ValidateLifetime = true,
+                     ValidateIssuerSigningKey = true,
+                     ValidIssuer = "yourdomain.com",
+                     ValidAudience = "yourdomain.com",
+                     IssuerSigningKey = new SymmetricSecurityKey(
+                        Encoding.UTF8.GetBytes(Configuration["APP_SECRET_KEY"])
+                     ),
+                     ClockSkew = TimeSpan.Zero
+                 });
 
             //... set Application Database Context as a service
             services.AddDbContext<ApplicationDbContext>(options =>  options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
@@ -72,8 +106,8 @@ namespace webcore.angular.demo.candidate
             });
 
             //... set security options 
-            StartupSecurity.Configure(app, env);
-            
+            app.UseAuthentication();
+
             //... set routing options 
             app.UseMvc(routes =>
             {

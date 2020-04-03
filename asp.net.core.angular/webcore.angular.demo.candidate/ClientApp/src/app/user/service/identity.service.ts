@@ -1,8 +1,7 @@
 import { Injectable, Inject, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { AccountUser } from '../model/account';
 import { Observable } from 'rxjs';
-import { AccountUser } from '../model/account.user';
-import { AccountToken } from '../model/account.token';
 
 @Injectable()
 export class IdentityService {
@@ -34,7 +33,7 @@ export class IdentityService {
     localStorage.setItem('tokenExpiration', expiration);
   }
 
-  saveTokens(value: AccountToken) {
+  saveTokens(value: { token: string, expiration: string }) {
     this.setTokens(value.token, value.expiration);
   }
 
