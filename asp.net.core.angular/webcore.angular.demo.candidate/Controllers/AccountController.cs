@@ -24,7 +24,6 @@ namespace webcore.angular.demo.candidate.Controllers
             _identityService = identityService;
         }
 
-
         [HttpPost]
         public async Task<IActionResult> CreateUser([FromBody] AccountUser model)
         {

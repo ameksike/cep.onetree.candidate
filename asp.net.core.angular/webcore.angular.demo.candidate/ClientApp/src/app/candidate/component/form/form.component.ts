@@ -59,7 +59,7 @@ export class FormComponent implements OnInit {
         error => this.onError(error)
       );
     } else {
-      candidate.candidateId = parseInt(this.id) ;
+      candidate.id = parseInt(this.id) ;
       this.srvData.update(this.id, candidate).subscribe(
         result => this.onSave(result),
         error => this.onError(error)

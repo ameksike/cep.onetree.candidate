@@ -36,7 +36,7 @@ export class ListComponent implements OnInit {
   }
 
   onDelete(item: any) {
-    this.srvData.delete(item.candidateId).subscribe(
+    this.srvData.delete(item.id).subscribe(
       data => {
         console.log(data);
         this.reloadData();
@@ -48,13 +48,13 @@ export class ListComponent implements OnInit {
 
   onDetails(item: any) {
     console.log(item);
-    this.router.navigate(['/candidate/details', item.candidateId]);
+    this.router.navigate(['/candidate/details', item.id]);
 
   }
 
   onEdit(item: any) {
     console.log(item);
-    this.router.navigate(['/candidate/edit', item.candidateId]);
+    this.router.navigate(['/candidate/edit', item.id]);
   }
 
   onAdd() {

@@ -35,9 +35,7 @@ namespace webcore.angular.demo.candidate
 
             StartupServices.ConfigureServices(services);
             StartupSecurity.ConfigureServices(services, Configuration);
-      
-            //... set Application Database Context as a service
-            services.AddDbContext<ApplicationDbContext>(options =>  options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            StartupDataModel.ConfigureServices(services, Configuration);
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>

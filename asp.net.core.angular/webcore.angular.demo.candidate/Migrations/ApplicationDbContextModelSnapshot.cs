@@ -182,7 +182,7 @@ namespace webcore.angular.demo.candidate.Migrations
 
             modelBuilder.Entity("webcore.angular.demo.candidate.Models.Candidate", b =>
                 {
-                    b.Property<int>("CandidateId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -204,7 +204,7 @@ namespace webcore.angular.demo.candidate.Migrations
                     b.Property<string>("Position")
                         .HasColumnType("varchar(100)");
 
-                    b.HasKey("CandidateId");
+                    b.HasKey("Id");
 
                     b.ToTable("Candidate");
                 });

@@ -1,5 +1,5 @@
 export interface CandidateInterface {
-  candidateId?: number;
+  id?: number;
   firstname: string;
   lastname: string;
   experience?: number;
