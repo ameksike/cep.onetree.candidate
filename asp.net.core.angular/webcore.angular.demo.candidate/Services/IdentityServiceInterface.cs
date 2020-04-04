@@ -8,10 +8,8 @@ namespace webcore.angular.demo.candidate.Services
 {
     public interface IdentityServiceInterface
     {
-
-        string GetSecretKey();
         AccountToken BuildToken(AccountUser User);
-        Task<bool> isValid(AccountUser User);
+        Task<bool> isValidAccount(AccountUser User);
 
     }
 }

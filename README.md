@@ -14,8 +14,8 @@ It is a simple application that allows entering and viewing candidates in a huma
 ## Install steps
 - git clone https://github.com/ameksike/cep.onetree.candidate.git
 - Update-Database
-- add APP_SECRET_KEY environment variable 
-![Screenshot](readme/secret_key.png)
+- add environment variables: APP_SECRET_KEY, APP_EXPIRATION_DAY, APP_VALID_ISSUER, APP_VALID_AUDIENCE 
+![Screenshot](readme/options.png)
 
 ## Develop steps
 ### Develop Angular Command

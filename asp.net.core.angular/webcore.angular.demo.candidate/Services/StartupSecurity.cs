@@ -46,7 +46,7 @@ namespace webcore.angular.demo.candidate.Services
               .AddDefaultTokenProviders();
 
             //... set security 
-            /*services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
                  options.TokenValidationParameters = new TokenValidationParameters
                  {
@@ -54,13 +54,13 @@ namespace webcore.angular.demo.candidate.Services
                      ValidateAudience = true,
                      ValidateLifetime = true,
                      ValidateIssuerSigningKey = true,
-                     ValidIssuer = "mydomain.com",
-                     ValidAudience = "mydomain.com",
+                     ValidIssuer = Configuration["APP_VALID_ISSUER"],
+                     ValidAudience = Configuration["APP_VALID_AUDIENCE"],
                      IssuerSigningKey = new SymmetricSecurityKey(
-                        Encoding.UTF8.GetBytes(Configuration["APP_SECRET_KEY"]) //
+                        Encoding.UTF8.GetBytes(Configuration["APP_SECRET_KEY"])
                      ),
                      ClockSkew = TimeSpan.Zero
-                 });*/
+                 }); 
         }
     }
 }

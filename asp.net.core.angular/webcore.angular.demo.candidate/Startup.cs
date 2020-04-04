@@ -35,22 +35,6 @@ namespace webcore.angular.demo.candidate
 
             StartupServices.ConfigureServices(services);
             StartupSecurity.ConfigureServices(services, Configuration);
-           
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer(options =>
-                 options.TokenValidationParameters = new TokenValidationParameters
-                 {
-                     ValidateIssuer = true,
-                     ValidateAudience = true,
-                     ValidateLifetime = true,
-                     ValidateIssuerSigningKey = true,
-                     ValidIssuer = "yourdomain.com",
-                     ValidAudience = "yourdomain.com",
-                     IssuerSigningKey = new SymmetricSecurityKey(
-                        Encoding.UTF8.GetBytes(Configuration["APP_SECRET_KEY"])
-                     ),
-                     ClockSkew = TimeSpan.Zero
-                 });
       
             //... set Application Database Context as a service
             services.AddDbContext<ApplicationDbContext>(options =>  options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));

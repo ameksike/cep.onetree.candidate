@@ -29,7 +29,7 @@ namespace webcore.angular.demo.candidate.Controllers
         {
             if (ModelState.IsValid)
             {
-                if ( await _identityService.isValid(User) )
+                if ( await _identityService.isValidAccount(User) )
                 {
                     return Ok( _identityService.BuildToken(User) ); 
                 }
