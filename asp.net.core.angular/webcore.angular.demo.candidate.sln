@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29215.179
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webcore.angular.demo.candidate", "webcore.angular.demo.candidate\webcore.angular.demo.candidate.csproj", "{B8200AAD-D265-4A40-9666-AFC996BEFF51}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "webcore.angular.demo.candidate", "webcore.angular.demo.candidate\webcore.angular.demo.candidate.csproj", "{B8200AAD-D265-4A40-9666-AFC996BEFF51}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webcore.angular.demo.candidate.xunit.test", "webcore.angular.demo.candidate.xunit.test\webcore.angular.demo.candidate.xunit.test.csproj", "{68B6E7BE-B05E-408F-A970-5B42554105F4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{B8200AAD-D265-4A40-9666-AFC996BEFF51}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8200AAD-D265-4A40-9666-AFC996BEFF51}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8200AAD-D265-4A40-9666-AFC996BEFF51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68B6E7BE-B05E-408F-A970-5B42554105F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68B6E7BE-B05E-408F-A970-5B42554105F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68B6E7BE-B05E-408F-A970-5B42554105F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68B6E7BE-B05E-408F-A970-5B42554105F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

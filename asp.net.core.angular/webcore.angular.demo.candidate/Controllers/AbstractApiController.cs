@@ -11,6 +11,7 @@ namespace webcore.angular.demo.candidate.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Produces("application/json")]
     public abstract class AbstractApiController<TEntity, TRepository> : ControllerBase
         where TEntity : class, EntityInterface
         where TRepository : RepositoryInterface<TEntity>
@@ -24,21 +25,22 @@ namespace webcore.angular.demo.candidate.Controllers
 
         // GET: api/[controller]
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<TEntity>>> Get()
+        public async Task<IActionResult> Get()
         {
-            return await _repository.List();
+            var result = await _repository.List();
+            return Ok(result);
         }
 
         // GET: api/[controller]/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<TEntity>> Get(int id)
+        public async Task<IActionResult> Get(int id)
         {
             var entity = await _repository.Select(id);
             if (entity == null)
             {
                 return NotFound();
             }
-            return entity;
+            return Ok(entity);
         }
 
         // PUT: api/[controller]/5
@@ -49,28 +51,29 @@ namespace webcore.angular.demo.candidate.Controllers
             {
                 return BadRequest();
             }
-            await _repository.Update(entity);
-            return NoContent();
+            var result = await _repository.Update(entity);
+            return Ok(result);
         }
 
         // POST: api/[controller]
         [HttpPost]
-        public async Task<ActionResult<TEntity>> Post(TEntity entity)
+        public async Task<IActionResult> Post(TEntity entity)
         {
-            await _repository.Create(entity);
-            return CreatedAtAction("Get", new { id = entity.Id }, entity);
+            var result = await _repository.Create(entity);
+            return Ok(result); 
         }
 
         // DELETE: api/[controller]/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<TEntity>> Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
             var entity = await _repository.Delete(id);
             if (entity == null)
             {
                 return NotFound();
             }
-            return entity;
+            return Ok(entity);
         }
+
     }
 }

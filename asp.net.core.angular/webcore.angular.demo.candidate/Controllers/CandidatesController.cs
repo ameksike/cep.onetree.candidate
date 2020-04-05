@@ -10,7 +10,8 @@ using webcore.angular.demo.candidate.Models.Repository;
 
 namespace webcore.angular.demo.candidate.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]")] 
+    [Produces("application/json")]
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [ApiController]
     public class CandidatesController : AbstractApiController<Candidate, RepositoryInterface<Candidate>>
