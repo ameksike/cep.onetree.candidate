@@ -13,9 +13,9 @@ namespace webcore.angular.demo.candidate.Controllers
     [Route("api/[controller]")]
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [ApiController]
-    public class CandidatesController : AbstractApiController<Candidate, CandidateRepository>
+    public class CandidatesController : AbstractApiController<Candidate, RepositoryInterface<Candidate>>
     {
-        public CandidatesController(CandidateRepository repository) : base(repository)
+        public CandidatesController(RepositoryInterface<Candidate> repository) : base(repository)
         {
 
         }

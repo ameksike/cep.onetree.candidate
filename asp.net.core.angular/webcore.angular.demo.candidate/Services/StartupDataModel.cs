@@ -26,6 +26,7 @@ namespace webcore.angular.demo.candidate.Services
 
             //... set Repository
             services.AddScoped<CandidateRepository>();
+            services.AddScoped<RepositoryInterface<Candidate>, CandidateRepository>();
         }
     }
 }
