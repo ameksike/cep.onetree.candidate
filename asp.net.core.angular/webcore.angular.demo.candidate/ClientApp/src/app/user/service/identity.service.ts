@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AccountUser } from '../model/account.user';
 import { AccountToken } from '../model/account.token';
+import { MessageService } from '../../home/component/message/message.service';
 
 @Injectable()
 export class IdentityService {
@@ -14,7 +15,8 @@ export class IdentityService {
 
   constructor(
     private http: HttpClient,
-    @Inject('BASE_URL') private baseUrl: string
+    @Inject('BASE_URL') private baseUrl: string,
+    private srvMessage: MessageService
   ) {
     this._user = null;
     this.apiURL = this.baseUrl + "api/identity";
@@ -66,7 +68,10 @@ export class IdentityService {
     let src = this.http.post<any>(this.apiURL + "/login", userInfo);
     src.subscribe(
       token => this.loginSuccess(token, userInfo),
-      error => console.log(error)
+      error => {
+        console.log(error);
+        //this.srvMessage.error(error);
+      }
     );
     return src;
   }

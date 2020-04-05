@@ -1,0 +1,6 @@
+<div class="cmpmsg">
+    <div *ngFor="let item of model" class="{{style(item)}} alert-dismissable">
+        {{item.content}}
+        <a class="close" (click)="remove(item)">&times;</a>
+    </div>
+</div>

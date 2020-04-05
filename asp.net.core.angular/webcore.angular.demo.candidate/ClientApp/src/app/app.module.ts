@@ -24,9 +24,12 @@ import { IdentityService } from './user/service/identity.service';
 import { AccountService } from './user/service/account.service';
 import { AccountFormComponent } from './user/component/form/form.component';
 import { AuthInterceptorService } from './user/service/interceptor.service';
+import { MessageService } from './home/component/message/message.service';
+import { MessageComponent } from './home/component/message/message.component';
 
 @NgModule({
   declarations: [
+    MessageComponent,
     AppComponent,
     NavMenuComponent,
     HomeComponent,
@@ -54,6 +57,7 @@ import { AuthInterceptorService } from './user/service/interceptor.service';
     ])
   ],
   providers: [
+    MessageService,
     CandidateService,
     UploadimgService,
     GuardService,

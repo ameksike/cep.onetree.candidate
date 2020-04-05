@@ -2,8 +2,8 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
 import { CandidateService } from '../../service/candidate.service';
-import { HttpClient } from '@angular/common/http';
 import { CandidateInterface } from '../../model/candidate';
+import { MessageService } from '../../../home/component/message/message.service';
 
 @Component({
   selector: 'app-list',
@@ -16,7 +16,8 @@ export class ListComponent implements OnInit {
 
   constructor(
     private srvData: CandidateService,
-    private router: Router, 
+    private router: Router,
+    private srvMessage: MessageService
 
   ) {
 
@@ -27,8 +28,8 @@ export class ListComponent implements OnInit {
   reloadData() {
     this.srvData.list().subscribe(
       result => this.list = result,
-      error => console.error(error) 
-    ); //this.srvMessage.error(res.data['message']);
+      error => this.onError(error) 
+    ); 
   }
 
   ngOnInit() {
@@ -41,8 +42,7 @@ export class ListComponent implements OnInit {
         console.log(data);
         this.reloadData();
       },
-      error => console.log(error)
-     // error => this.srvMessage.error(error.message));
+      error => this.onError(error)
     );
   }
 
@@ -61,4 +61,8 @@ export class ListComponent implements OnInit {
     this.router.navigate(['/candidate/add']);
   }
 
+  onError(error) {
+    console.log(error);
+    this.srvMessage.error(error);
+  }
 }

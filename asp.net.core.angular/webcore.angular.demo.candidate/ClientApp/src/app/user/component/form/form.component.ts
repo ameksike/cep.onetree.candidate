@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AccountService } from '../../service/account.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { AccountUser } from '../../model/account.user';
+import { MessageService } from '../../../home/component/message/message.service';
 
 @Component({
   selector: 'app-form',
@@ -21,6 +22,7 @@ export class AccountFormComponent implements OnInit {
     private srvUser: IdentityService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
+    private srvMessage: MessageService
   ) { }
    
   ngOnInit() {
@@ -52,7 +54,8 @@ export class AccountFormComponent implements OnInit {
 
   handlerError(error) {
     if (error && error.error) {
-      alert(error.error[""]);
+      var msg = (error.status = 404) ? error.error + ", or User are really exist!" : error.error;
+      this.srvMessage.error(msg);
     }
   }
 

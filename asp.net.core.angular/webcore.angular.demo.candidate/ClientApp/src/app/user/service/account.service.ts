@@ -20,10 +20,13 @@ export class AccountService {
   create(userInfo: AccountUser): Observable<any> {
     let src = this.http.post<any>(this.apiURL, userInfo);
     src.subscribe(token => this.srvIdentity.saveTokens(token),
-      error => console.log(error)
+      error => this.onError(error)
     );
     return src;
   }
 
-
+  onError(error) {
+    console.log("Error-AccountService: ");
+    console.log(error);
+  }
 }

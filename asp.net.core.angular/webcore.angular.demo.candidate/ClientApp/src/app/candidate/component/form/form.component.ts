@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { CandidateInterface } from '../../model/candidate';
 import { CandidateService } from '../../service/candidate.service';
 import { UploadimgService } from '../../service/uploadimg.service';
+import { MessageService } from '../../../home/component/message/message.service';
 
 @Component({
   selector: 'app-form',
@@ -20,7 +21,8 @@ export class FormComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private srvData: CandidateService,
-    private uploader: UploadimgService
+    private uploader: UploadimgService,
+    private srvMessage: MessageService
   ) { }
 
   ngOnInit() {
@@ -77,6 +79,7 @@ export class FormComponent implements OnInit {
   }
 
   onError(error) {
+    this.srvMessage.error(error.message);
     console.log(error);
   }
 

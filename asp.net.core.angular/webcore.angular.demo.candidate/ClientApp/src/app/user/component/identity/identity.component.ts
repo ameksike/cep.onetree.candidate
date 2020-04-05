@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { IdentityService } from '../../service/identity.service';
 import { Router } from '@angular/router';
 import { AccountUser } from '../../model/account.user';
+import { MessageService } from '../../../home/component/message/message.service';
 
 @Component({
   selector: 'app-identity',
@@ -17,7 +18,8 @@ export class IdentityComponent implements OnInit {
   constructor(
     private frmBuilder: FormBuilder,
     private srvUser: IdentityService,
-    private router: Router
+    private router: Router,
+    private srvMessage: MessageService
   ) { }
 
   ngOnInit() {
@@ -45,8 +47,9 @@ export class IdentityComponent implements OnInit {
   }
 
   handlerError(error) {
-    if (error && error.error) {
-      alert(error.error[""]);
+    console.log(error);
+    if (error && error.error)
+      this.srvMessage.error(error.error[""]);
     }
   }
 
