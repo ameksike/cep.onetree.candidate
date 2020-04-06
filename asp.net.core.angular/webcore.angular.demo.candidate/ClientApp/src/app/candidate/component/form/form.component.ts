@@ -5,7 +5,6 @@ import { CandidateInterface } from '../../model/candidate';
 import { CandidateService } from '../../service/candidate.service';
 import { UploadimgService } from '../../service/uploadimg.service';
 import { MessageService } from '../../../home/component/message/message.service';
-import { type } from 'os';
 
 @Component({
   selector: 'app-form',
