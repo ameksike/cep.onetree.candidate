@@ -5,6 +5,7 @@ import { CandidateInterface } from '../../model/candidate';
 import { CandidateService } from '../../service/candidate.service';
 import { UploadimgService } from '../../service/uploadimg.service';
 import { MessageService } from '../../../home/component/message/message.service';
+import { type } from 'os';
 
 @Component({
   selector: 'app-form',
@@ -79,7 +80,9 @@ export class FormComponent implements OnInit {
   }
 
   onError(error) {
-    this.srvMessage.error(error.message);
+    var pre = "Error - Candidate Form >> ";
+    var msg = typeof (error) == "string" ? error : (error.message ? error.message : (error.statusText ? error.statusText : (error.error ? error.error [""] : "" ) )  ); 
+    this.srvMessage.error(pre + msg);
     console.log(error);
   }
 

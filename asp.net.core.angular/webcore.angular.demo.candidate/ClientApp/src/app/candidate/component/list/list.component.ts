@@ -63,6 +63,8 @@ export class ListComponent implements OnInit {
 
   onError(error) {
     console.log(error);
-    this.srvMessage.error(error);
+    var pre = "Error - Candidate List >> ";
+    var msg = typeof (error) == "string" ? error : (error.message ? error.message : (error.statusText ? error.statusText : (error.error ? error.error[""] : "")));
+    this.srvMessage.error(pre + msg);
   }
 }

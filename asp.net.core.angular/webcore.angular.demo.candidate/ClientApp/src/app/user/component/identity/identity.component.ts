@@ -48,9 +48,9 @@ export class IdentityComponent implements OnInit {
 
   handlerError(error) {
     console.log(error);
-    if (error && error.error)
-      this.srvMessage.error(error.error[""]);
-    }
+    var pre = "Error - User Account Login >> ";
+    var msg = typeof (error) == "string" ? error : (error.message ? error.message : (error.statusText ? error.statusText : (error.error ? error.error[""] : "")));
+    this.srvMessage.error(pre + msg);
   }
 
 }

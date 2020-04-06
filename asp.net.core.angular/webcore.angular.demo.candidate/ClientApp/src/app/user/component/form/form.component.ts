@@ -54,8 +54,9 @@ export class AccountFormComponent implements OnInit {
 
   handlerError(error) {
     if (error && error.error) {
-      var msg = (error.status = 404) ? error.error + ", or User are really exist!" : error.error;
-      this.srvMessage.error(msg);
+      var pre = "Error - User Account Form >> ";
+      var msg = typeof (error) == "string" ? error : (error.message ? error.message : (error.statusText ? error.statusText : (error.error ? error.error[""] : "")));
+      this.srvMessage.error(pre + msg + ", or User are really exist!" );
     }
   }
 
